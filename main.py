@@ -19,6 +19,7 @@ for r in response_list:
 
 # methods
 def start():
+  input("Patient?")
   print("Opening app...")
   # time.sleep(3)
   print("Training for Patient starting...")
