@@ -1,6 +1,8 @@
+# urls.py
 from django.urls import path
-from sbt_app import views
+from . import views
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path('', views.start_screen, name='start_screen'),
+    # Add other URL patterns as needed
 ]

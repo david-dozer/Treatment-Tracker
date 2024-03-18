@@ -2,21 +2,14 @@ import re
 from django.utils.timezone import datetime
 from django.http import HttpResponse
 
-def home(request):
-    return HttpResponse("Hello, Django!")
+# views.py
+from django.shortcuts import render, redirect
+from .models import Client
 
-def hello_there(request, name):
-    now = datetime.now()
-    formatted_now = now.strftime("%A, %d %B, %Y at %X")
-
-    # Filter the name argument to letters only using regular expressions. URL arguments
-    # can contain arbitrary text, so we restrict to safe characters only.
-    match_object = re.match("[a-zA-Z]+", name)
-
-    if match_object:
-        clean_name = match_object.group(0)
-    else:
-        clean_name = "Friend"
-
-    content = "Hello there, " + clean_name + "! It's " + formatted_now
-    return HttpResponse(content)
+def start_screen(request):
+    if request.method == 'POST':
+        client_name = request.POST.get('client_name')
+        # Create a new client object or fetch existing if needed
+        # Redirect to the next step in treatment
+        return redirect('next_step_url_name')
+    return render(request, 'start_screen.html')
