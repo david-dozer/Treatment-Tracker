@@ -7,11 +7,11 @@ import random_session
 # ------------------
 # response list we want to invoke
 response_list = []
-response_list.append(response.Response("sFCR", 0))
-response_list.append(response.Response("cFCR", 0))
-response_list.append(response.Response("TR", 0))
+response_list.append(response.Response("sFCR"))
+response_list.append(response.Response("cFCR"))
+response_list.append(response.Response("TR"))
 for i in range(1, 7):
-  response_list.append(response.Response("CAB" + str(i), 0))
+  response_list.append(response.Response("CAB" + str(i)))
 
 for r in response_list:
   print(r.name)

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Interface</title>
+{% load static %}
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .stats, .treatment, .actions {
+    margin-bottom: 20px;
+  }
+  .stats p, .treatment p {
+    margin: 0;
+  }
+  .actions button {
+    font-size: large;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+<form method="post" action="{% url 'update_session' %}">
+  {% csrf_token %}
+  <div class="container">
+    <div class="stats">
+      <p><strong>Engagements:</strong> {{ session.engagements }}</p>
+      <p><strong>Trials:</strong> {{ session.num_trials }}</p>
+    </div>
+    <div class="treatment">
+      <h2>Treatment for {{ client.first_name }} {{ client.last_name }}</h2>
+      <p>Step {{ session.step }}, trial {{ session.trial }}</p>
+      <p>{{ session.response }}</p>
+    </div>
+  </div>
+  <div class="actions">
+    <button type="submit" name="approve" class="approve">✔️ Approve</button>
+    <button type="submit" name="deny" class="deny">❌ Deny</button>
+  </div>
+  <input type="hidden" name="session_id" value="{{ session.id }}">
+</form>
+</body>
+</html>

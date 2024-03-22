@@ -10,3 +10,18 @@ class Client(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+class Response(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Session(models.Model):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    response = models.ForeignKey(Response, on_delete=models.CASCADE)
+    num_engagements = models.IntegerField(default=0)
+    num_trials = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"Session for {self.client.first_name} {self.client.last_name}"

@@ -3,7 +3,7 @@ from django.utils.timezone import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from abat.forms import ClientForm
-from abat.models import Client
+from abat.models import Client, Response, Session
 
 def home(request):
     return HttpResponse("Start Screen")
@@ -37,7 +37,9 @@ def start_screen(request):
     return render(request, 'abat/start_screen.html', {'form': form})
 
 def start_treatment(request):
-    return render(request, 'abat/start_treatment.html')
+    return render(request, 'abat/session_interface.html')
+
+
 
 # def clients_list(request):
 #     clients = Client.objects.all()
