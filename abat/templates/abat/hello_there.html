@@ -1,12 +1,21 @@
+<!-- hello_there.html -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Navigate</title>
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'abat/site.css' %}" />
-    </head>
-    <body>
-        <span class="message">Hello, there {{ name }}!</span> It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Navigate</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'abat/site.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'hello_there' name=name %}">Home</a> <!-- Pass the 'name' parameter -->
+    </div>
+
+    <div class="message">Hello, there {{ name }}!</div>
+    <div>It's {{ date | date:'l, d F, Y' }} at {{ date | time:'H:i:s' }}.</div>
+
+    <!-- Content specific to hello_there.html -->
+    <a href="{% url 'start_treatment' %}"><button class="start-button">READY TO START?</button></a>
+</body>
 </html>
